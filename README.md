@@ -25,6 +25,7 @@ Dữ liệu ưu tiên Module 2: thêm 6 nhà cung cấp, 176 hóa đơn nhập t
 Đặt lịch hẹn vẫn công khai. Các trang báo cáo yêu cầu đăng nhập và chỉ tài khoản có vai trò `Manager` được xem thống kê nhà cung cấp. Các trang báo cáo có nút đăng xuất.
 
 Các file SQL không chứa tài khoản/mật khẩu mặc định. Để tạo tài khoản local, thêm nhân viên vào bảng `tblStaff3` trong phpMyAdmin với `username`, `password`, `fullName` và `role` (`Manager`, `WarehouseStaff` hoặc `SalesStaff`). Mật khẩu dạng cũ được chuyển sang PBKDF2 sau lần đăng nhập hợp lệ đầu tiên; không dùng cách tạo tài khoản này cho môi trường công khai.
+tài khoản demo: manager01/ B23dcat143
 
 ## Build và chạy
 
