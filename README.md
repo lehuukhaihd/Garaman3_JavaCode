@@ -25,16 +25,19 @@ Dữ liệu ưu tiên Module 2: thêm 6 nhà cung cấp, 176 hóa đơn nhập t
 Đặt lịch hẹn vẫn công khai. Các trang báo cáo yêu cầu đăng nhập và chỉ tài khoản có vai trò `Manager` được xem thống kê nhà cung cấp. Các trang báo cáo có nút đăng xuất.
 
 Các file SQL không chứa tài khoản/mật khẩu mặc định. Để tạo tài khoản local, thêm nhân viên vào bảng `tblStaff3` trong phpMyAdmin với `username`, `password`, `fullName` và `role` (`Manager`, `WarehouseStaff` hoặc `SalesStaff`). Mật khẩu dạng cũ được chuyển sang PBKDF2 sau lần đăng nhập hợp lệ đầu tiên; không dùng cách tạo tài khoản này cho môi trường công khai.
-## tài khoản demo: manager01/ B23dcat143
+Tài khoản demo được lưu trong MySQL local; không ghi mật khẩu vào repository.
 
-## Build và chạy
+## Build và chạy bằng Tomcat nhúng
 
-1. Cài JDK 11 trở lên, Maven 3.8 trở lên và Tomcat 9.
-2. Mở terminal tại thư mục chứa `pom.xml`, chạy `mvn clean package`.
-3. Sao chép `target/GaraMan3_Web.war` vào thư mục `webapps` của Tomcat 9 rồi khởi động Tomcat.
-4. Mở `http://localhost:8080/GaraMan3_Web/`.
+1. Cài JDK 11 trở lên và Maven 3.8 trở lên; không cần cài Tomcat riêng.
+2. Bật **MySQL** trong XAMPP.
+3. Mở terminal tại thư mục chứa `pom.xml`, chạy `mvn clean package` sau khi tải code mới hoặc thay đổi mã nguồn. Lệnh này tạo WAR, launcher và các thư viện Tomcat nhúng trong `target`.
+4. Chạy `bat-dau-embedded.bat`. Mặc định ứng dụng mở tại `http://localhost:8080/GaraMan3_Web/`. Nếu cổng 8080 bận, chạy `bat-dau-embedded.bat 8081`.
+5. Đóng cửa sổ launcher hoặc nhấn `Ctrl+C` để dừng ứng dụng.
 
-Tomcat 9 dùng cổng mặc định `8080`, Apache XAMPP thường dùng cổng `80`; hai dịch vụ có thể chạy song song. Nếu cổng MySQL không phải `3306`, đặt lại `GARAMAN3_DB_URL`.
+Tomcat nhúng chỉ lắng nghe trên máy local. Để ứng dụng tự chạy sau khi đăng nhập Windows, thêm shortcut trỏ tới `bat-dau-embedded.bat` vào thư mục Startup; máy hiện tại đã được cấu hình shortcut này. Nếu cổng MySQL không phải `3306`, đặt lại `GARAMAN3_DB_URL`.
+
+File `target/GaraMan3_Web.war` vẫn có thể triển khai lên Tomcat 9 cài riêng nếu cần.
 
 ## Luồng đặt lịch
 
