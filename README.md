@@ -32,8 +32,8 @@ Tài khoản demo được lưu trong MySQL local; không ghi mật khẩu vào 
 1. Cài JDK 11 trở lên và Maven 3.8 trở lên; không cần cài Tomcat riêng.
 2. Bật **MySQL** trong XAMPP.
 3. Mở terminal tại thư mục chứa `pom.xml`, chạy `mvn clean package` sau khi tải code mới hoặc thay đổi mã nguồn. Lệnh này tạo WAR, launcher và các thư viện Tomcat nhúng trong `target`.
-4. Chạy `bat-dau-embedded.bat`. Mặc định ứng dụng mở tại `http://localhost:8080/GaraMan3_Web/`. Nếu cổng 8080 bận, chạy `bat-dau-embedded.bat 8081`.
-5. Đóng cửa sổ launcher hoặc nhấn `Ctrl+C` để dừng ứng dụng.
+4. Bấm đúp `bat-dau-embedded.bat`. File sẽ khởi động Tomcat nhúng, chờ ứng dụng sẵn sàng rồi mở trang chủ trong trình duyệt mặc định. Nếu cổng 8080 bận, chạy `bat-dau-embedded.bat 8081`.
+5. Để dừng ứng dụng, nhấn `Ctrl+C` trong cửa sổ Tomcat vừa mở.
 
 Tomcat nhúng chỉ lắng nghe trên máy local. Để ứng dụng tự chạy sau khi đăng nhập Windows, thêm shortcut trỏ tới `bat-dau-embedded.bat` vào thư mục Startup; máy hiện tại đã được cấu hình shortcut này. Nếu cổng MySQL không phải `3306`, đặt lại `GARAMAN3_DB_URL`.
 

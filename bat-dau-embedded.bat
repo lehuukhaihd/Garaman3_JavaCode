@@ -35,8 +35,25 @@ if errorlevel 1 (
 )
 
 echo Dang khoi dong GaraMan3 voi embedded Tomcat tren cong %PORT%...
-"%JAVA_EXE%" -cp "%LAUNCHER_JAR%;%LIB_DIR%\*" com.garaman3.launcher.EmbeddedTomcat "%WAR_FILE%" "%PORT%"
-if errorlevel 1 (
-    echo Khong khoi dong duoc GaraMan3. Kiem tra cong, Java va MySQL.
+start "GaraMan3 Embedded Tomcat" "%JAVA_EXE%" -cp "%LAUNCHER_JAR%;%LIB_DIR%\*" com.garaman3.launcher.EmbeddedTomcat "%WAR_FILE%" "%PORT%"
+
+set "APP_URL=http://localhost:%PORT%/GaraMan3_Web/"
+set "WAIT_COUNT=0"
+
+:wait_for_server
+curl.exe --fail --silent --max-time 2 "%APP_URL%" -o NUL >nul 2>&1
+if not errorlevel 1 goto open_browser
+set /a WAIT_COUNT+=1
+if %WAIT_COUNT% GEQ 30 goto server_not_ready
+timeout /t 1 /nobreak >nul
+goto wait_for_server
+
+:open_browser
+echo Dang mo %APP_URL%...
+start "" "%APP_URL%"
+exit /b 0
+
+:server_not_ready
+echo Khong truy cap duoc GaraMan3 sau 30 giay. Kiem tra cua so Tomcat, cong va MySQL.
     pause
-)
+    exit /b 1
