@@ -1,6 +1,7 @@
 # GaraMan3 Web
 
 Ứng dụng Java Web Maven dùng Servlet/JSP, MySQL XAMPP và Tomcat 9.
+## Tài khoản demo: manager01/B23dcat143
 
 ## Cấu hình database
 
